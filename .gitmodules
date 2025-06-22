@@ -1,6 +1,0 @@
-[submodule "repoAngular"]
-    path = repoAngular
-    url = https://github.com/Miguel080902/repoAngular.git
-[submodule "repoGood"]
-    path = repoGood
-    url = https://github.com/Miguel080902/repoGood.git
