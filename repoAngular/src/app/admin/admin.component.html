@@ -1,0 +1,13 @@
+<div class="admin-container" style="padding-top: 5em">
+  <mat-toolbar color="primary">
+    <h1>Administración de Usuarios</h1>
+    <span class="spacer"></span>
+    <button mat-mini-fab color="accent" (click)="openDialog()" matTooltip="Agregar nuevo usuario">
+      <mat-icon>person_add</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="content-wrapper">
+    <app-user-table [users]="users"></app-user-table>
+  </div>
+</div>

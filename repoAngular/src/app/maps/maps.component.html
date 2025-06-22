@@ -1,0 +1,32 @@
+<div class="map-container">
+  <div #map class="map"></div>
+  <div class="controls-panel">
+    <div class="button-group">
+      <button mat-raised-button color="primary" (click)="startRoute()" [disabled]="path.length < 2">
+        <mat-icon>{{ isPlaying ? 'stop' : 'play_arrow' }}</mat-icon>
+        {{ isPlaying ? 'Detener Recorrido' : 'Iniciar Recorrido' }}
+      </button>
+      <button mat-raised-button color="accent" (click)="optimizeRoute()" [disabled]="path.length < 3 || isOptimized">
+        <mat-icon>route</mat-icon>
+        {{ isOptimized ? 'Ruta Optimizada' : 'Optimizar Ruta' }}
+      </button>
+      <button mat-stroked-button color="warn" (click)="clearRoute()">
+        <mat-icon>clear_all</mat-icon>
+        Limpiar Ruta
+      </button>
+      <button mat-raised-button color="basic" (click)="saveRoute()" [disabled]="path.length < 2">
+        <mat-icon>save</mat-icon>
+        Guardar Ruta
+      </button>
+    </div>
+
+    <div class="instructions-card">
+      <h3>Instrucciones</h3>
+      <p>1. Haz clic en el ícono de marcador en el mapa.</p>
+      <p>2. Coloca al menos **2 puntos** en el mapa para definir tu ruta (origen y destino).</p>
+      <p>3. Para agregar **paradas intermedias**, coloca más marcadores.</p>
+      <p>4. (Opcional) Si tienes **3 o más puntos**, presiona "Optimizar Ruta" para encontrar el camino más eficiente entre las paradas intermedias.</p>
+      <p>5. Presiona "Iniciar Recorrido" para ver la simulación.</p>
+    </div>
+  </div>
+</div>

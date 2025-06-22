@@ -1,0 +1,192 @@
+// home.component.scss
+
+// Variables para consistencia
+$text-color-dark: #333;
+$text-color-light: #666;
+$background-light: #f5f7fa; // Un fondo más suave
+$card-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); // Sombra más prominente para la tarjeta
+$border-radius-card: 12px;
+$spacing-unit: 16px;
+$primary-color: #3f51b5; // Ejemplo de un color primario de Material
+$accent-color: #ff4081; // Ejemplo de un color de acento de Material
+$warn-color: #f44336;   // Ejemplo de un color de advertencia de Material
+$background-light: rgba(255, 255, 255, 0.95);
+$shadow-strength: 0.15;
+$border-radius-size: 8px;
+$spacing-unit: 16px;
+/* home.component.scss */
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 64px);
+  background-color: $background-light;
+  padding: $spacing-unit;
+  box-sizing: border-box;
+  // Añade esta línea para ocultar cualquier contenido que se desborde de este contenedor
+  // durante la animación. Es menos intrusivo que ocultarlo en el body si no es necesario.
+  overflow: hidden; // Esto aplicará overflow a este contenedor
+}
+
+.home-card {
+  max-width: 600px; // Limita el ancho de la tarjeta para mejor legibilidad
+  width: 100%; // Ocupa todo el ancho disponible hasta el max-width
+  border-radius: $border-radius-card;
+  box-shadow: $card-shadow;
+  padding: $spacing-unit * 1.5; // Padding interno generoso
+  background: white; // Fondo de tarjeta blanco
+
+  .mat-mdc-card-header {
+    display: flex;
+    flex-direction: column; // Título y subtítulo apilados
+    align-items: center;
+    justify-content: center;
+    padding-bottom: $spacing-unit;
+    margin-bottom: $spacing-unit; // Espacio después de la cabecera
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08); // Separador más sutil
+  }
+
+  mat-card-title {
+    font-size: 2.2em; // Tamaño de fuente más grande y moderno
+    font-weight: 700; // Más negrita
+    color: $primary-color; // Color principal para el título
+    margin-bottom: 8px; // Espacio entre título y subtítulo
+    line-height: 1.2; // Altura de línea para títulos largos
+    text-align: center;
+  }
+
+  mat-card-subtitle {
+    font-size: 1.1em; // Tamaño de fuente ligeramente mayor para subtítulo
+    color: $text-color-light;
+    text-align: center; // Centrar subtítulo también
+    margin: auto;
+    max-width: 80%; // Limita el ancho del subtítulo para que no sea muy largo
+  }
+
+  .mat-mdc-card-content {
+    padding-top: 0; // Quita el padding superior por defecto si Material lo añade
+    padding-bottom: $spacing-unit;
+
+    .intro-text {
+      font-size: 1.1em;
+      color: $text-color-dark;
+      margin-bottom: $spacing-unit;
+      text-align: center; // Centra el texto introductorio
+    }
+
+    .features-list {
+      list-style: none; // Quita los bullet points por defecto
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-unit / 2; // Espacio entre ítems de la lista
+
+      li {
+        display: flex;
+        align-items: center; // Alinea el icono con el texto
+        font-size: 1.05em;
+        color: $text-color-dark;
+        line-height: 1.5;
+
+        mat-icon {
+          margin-right: 10px; // Espacio entre icono y texto
+          font-size: 24px; // Asegura que los iconos tengan buen tamaño
+          width: 24px; // Ancho fijo para el icono
+          height: 24px; // Alto fijo para el icono
+        }
+        // Colores de icono específicos si los deseas
+        mat-icon[color="primary"] { color: $primary-color; }
+        mat-icon[color="accent"] { color: $accent-color; }
+        mat-icon[color="warn"] { color: $warn-color; }
+      }
+    }
+  }
+
+  .home-buttons {
+    display: flex;
+    justify-content: center; // Centra los botones
+    gap: $spacing-unit; // Espacio entre botones
+    margin-top: $spacing-unit * 1.5; // Más espacio arriba de los botones
+    padding-top: $spacing-unit; // Padding superior para la sección de acciones
+    border-top: 1px solid rgba(0, 0, 0, 0.05); // Separador sutil antes de los botones
+
+    button {
+      font-size: 1.05em; // Tamaño de fuente un poco más grande para botones
+      padding: 12px 28px; // Más padding para botones
+      border-radius: 6px; // Bordes ligeramente menos redondeados
+      min-width: 180px; // Ancho mínimo para los botones
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px; // Espacio entre icono y texto del botón
+      transition: transform 0.2s ease, box-shadow 0.2s ease; // Transición para hover
+
+      &:hover {
+        transform: translateY(-2px); // Ligero efecto de elevación al pasar el mouse
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      &.mat-mdc-raised-button.mat-primary {
+        background-color: $primary-color;
+        color: white;
+      }
+
+      &.mat-mdc-raised-button.mat-accent {
+        background-color: $accent-color;
+        color: white;
+      }
+    }
+  }
+}
+
+/* --- Media Queries para Responsividad --- */
+
+@media (max-width: 768px) {
+  .home-card {
+    padding: $spacing-unit; // Menos padding en móviles
+
+    mat-card-title {
+      font-size: 1.8em; // Título más pequeño en móviles
+    }
+
+    mat-card-subtitle {
+      font-size: 1em;
+    }
+
+    .intro-text {
+      font-size: 1em;
+    }
+
+    .features-list {
+      li {
+        font-size: 0.95em;
+        mat-icon {
+          font-size: 20px;
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+
+    .home-buttons {
+      flex-direction: column; // Botones apilados en móviles
+      align-items: center; // Centra los botones apilados
+      gap: $spacing-unit / 2; // Menos espacio entre botones
+      margin-top: $spacing-unit; // Menos margen superior
+
+      button {
+        width: 100%; // Ocupa todo el ancho disponible
+        max-width: 280px; // Limita el ancho máximo del botón en móvil
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .home-card {
+    padding: $spacing-unit * 0.8;
+  }
+}

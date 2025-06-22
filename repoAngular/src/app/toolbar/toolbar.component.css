@@ -1,0 +1,23 @@
+.main-toolbar {
+  position: fixed;  /* Fija la toolbar en la parte superior */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  color: #dddddd;
+  background-color: #3F51B5FF;
+  box-shadow: 0 5px 20px rgba(18, 129, 255, 0.51); /* Opcional: sombra para mejor visibilidad */
+}
+.spacer {
+  flex: 1 1 auto;
+}
+.title {
+  font-weight: bold;
+}
+
+button{
+  color: #dddddd !important;
+  background-color: transparent; /* Fondo transparente */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+}

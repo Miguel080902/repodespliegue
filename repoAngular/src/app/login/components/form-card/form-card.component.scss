@@ -1,0 +1,196 @@
+// Variables para consistencia
+$primary-color: #001E6C;
+$accent-color: #dd9100;
+$warn-color: #f44336; // Color para errores
+$background-light: #f5f7fa; // Fondo suave
+$card-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); // Sombra más pronunciada
+$border-radius-card: 12px;
+$spacing-unit: 16px;
+
+.login-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; // Ocupa toda la altura de la vista
+  background: linear-gradient(135deg, $primary-color 0%, darken($primary-color, 10%) 100%); // Fondo degradado
+  padding: $spacing-unit; // Padding para espacio en móviles
+  box-sizing: border-box; // Incluye padding en el ancho/alto
+  overflow: hidden; // Previene scrollbars por animación
+}
+
+.login-container {
+  width: 100%; // Asegura que ocupe el ancho disponible hasta el max-width de la tarjeta
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  max-width: 450px; // Aumentamos ligeramente el ancho máximo para más espacio
+  width: 100%;
+  padding: $spacing-unit * 1.5; // Padding interno generoso
+  border: none; // Eliminamos el borde explícito si ya hay sombra
+  border-radius: $border-radius-card;
+  box-shadow: $card-shadow;
+  background-color: white; // Fondo de la tarjeta blanco
+  overflow: hidden; // Asegura que nada se desborde dentro de la tarjeta
+  transition: transform 0.3s ease, box-shadow 0.3s ease; // Transición para levitación
+
+  &:hover {
+    transform: translateY(-8px); // Efecto de levitación más pronunciado
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25); // Sombra más pronunciada al hover
+  }
+
+  .login-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: $spacing-unit;
+    margin-bottom: $spacing-unit;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+    mat-card-title {
+      display: flex;
+      align-items: center;
+      gap: 10px; // Espacio entre icono y texto
+      font-size: 2em; // Título más grande
+      font-weight: 700;
+      color: $primary-color;
+      margin-bottom: 8px;
+      justify-content: center;
+      .login-icon {
+        font-size: 32px; // Tamaño del icono del título
+        width: 32px;
+        height: 32px;
+        color: $accent-color; // Color de acento para el icono
+      }
+    }
+
+    mat-card-subtitle {
+      font-size: 1.1em;
+      color: #777;
+      text-align: center;
+      line-height: 1.4;
+      margin: auto;
+      max-width: 90%; // Limita el ancho para mejor legibilidad
+    }
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-unit; // Espacio entre campos del formulario
+    padding-top: $spacing-unit;
+
+    .full-width {
+      width: 100%;
+    }
+
+    mat-form-field {
+      .mat-mdc-form-field-flex {
+        align-items: center; // Alinea icono y input
+      }
+      mat-icon[matPrefix] {
+        margin-right: 8px; // Espacio entre icono y input
+        color: #999; // Color sutil para los iconos de input
+      }
+    }
+  }
+
+  .app-error-message {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: lighten($warn-color, 45%); // Fondo suave para el error
+    color: darken($warn-color, 10%); // Texto oscuro para el error
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: $spacing-unit; // Espacio antes del botón
+    font-size: 0.9em;
+    font-weight: 500;
+    border: 1px solid lighten($warn-color, 30%); // Borde sutil
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+      color: $warn-color;
+    }
+  }
+
+  .login-actions {
+    display: flex;
+    justify-content: center; // Centra el botón
+    padding-top: $spacing-unit; // Espacio superior para las acciones
+    border-top: 1px solid rgba(0, 0, 0, 0.05); // Separador sutil
+
+    button {
+      width: 100%;
+      max-width: 250px; // Limita el ancho del botón
+      height: 50px; // Altura del botón
+      font-size: 1.1em;
+      font-weight: bold;
+      border-radius: 30px; // Botón más redondeado (pastilla)
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px; // Espacio entre icono y texto del botón
+      transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+
+      &.mat-mdc-raised-button.mat-primary {
+        background-color: $primary-color;
+        color: white;
+      }
+
+      &:hover {
+        transform: translateY(-2px); // Ligero efecto de elevación al pasar el mouse
+        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      mat-icon {
+        font-size: 22px; // Tamaño del icono del botón
+      }
+    }
+  }
+}
+
+/* --- Media Queries para Responsividad --- */
+
+@media (max-width: 600px) {
+  .login-view {
+    padding: $spacing-unit / 2; // Menos padding en pantallas muy pequeñas
+  }
+
+  .login-card {
+    padding: $spacing-unit; // Menos padding interno
+
+    .login-card-header {
+      mat-card-title {
+        font-size: 1.8em; // Título más pequeño
+        .login-icon {
+          font-size: 28px;
+          width: 28px;
+          height: 28px;
+        }
+      }
+      mat-card-subtitle {
+        font-size: 0.95em;
+      }
+    }
+
+    .login-form {
+      gap: $spacing-unit * 0.8; // Menos espacio entre campos
+    }
+
+    .login-actions {
+      button {
+        max-width: 100%; // El botón ocupa todo el ancho disponible
+        font-size: 1em;
+        height: 45px;
+        padding: 0 15px; // Ajusta padding
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<div class="home-container" @fadeInUp>
+  <mat-card class="home-card">
+    <mat-card-header>
+      <mat-card-title>
+        ¡Bienvenido, {{ authService.getUsername() }}!
+      </mat-card-title>
+      <mat-card-subtitle>
+        Tu plataforma integral para la gestión y visualización de rutas.
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p class="intro-text">
+        Esta aplicación está diseñada para optimizar tus operaciones de logística y seguimiento. Aquí podrás:
+      </p>
+      <ul class="features-list">
+        <li><mat-icon color="primary">add_road</mat-icon> Dibujar rutas personalizadas y complejas directamente sobre el mapa.</li>
+        <li><mat-icon color="accent">directions_car</mat-icon> Simular el recorrido de un vehículo a lo largo de tus rutas definidas.</li>
+        <li><mat-icon color="warn">group</mat-icon> Gestionar usuarios y permisos de acceso de forma sencilla y segura.</li>
+      </ul>
+    </mat-card-content>
+
+    <mat-card-actions class="home-buttons">
+      <button mat-raised-button color="primary" routerLink="/maps">
+        <mat-icon>map</mat-icon> Ir al Mapa
+      </button>
+      <button mat-raised-button color="accent" routerLink="/admin">
+        <mat-icon>people</mat-icon> Administrar Usuarios
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

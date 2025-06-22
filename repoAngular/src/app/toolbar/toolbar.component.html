@@ -1,0 +1,22 @@
+<mat-toolbar color="primary" class="main-toolbar">
+  <div class="toolbar-brand" (click)="navigateTo('home')">
+    <mat-icon class="app-icon">local_shipping</mat-icon> <span class="app-title">Gestión de Rutas</span>
+  </div>
+
+  <span class="spacer"></span>
+
+  <div class="toolbar-navigation">
+    <button mat-button class="nav-button" routerLink="/maps" routerLinkActive="active-link">
+      <mat-icon>map</mat-icon> Mapa
+    </button>
+    @if (authService.isAdmin()) {
+      <button mat-button class="nav-button" routerLink="/admin" routerLinkActive="active-link">
+        <mat-icon>admin_panel_settings</mat-icon> Administración
+      </button>
+    }
+  </div>
+
+  <button mat-icon-button class="logout-button" (click)="logout()" matTooltip="Cerrar sesión">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>

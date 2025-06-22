@@ -1,0 +1,140 @@
+// toolbar.component.scss
+
+// Variables para consistencia con tu tema
+$primary-color: #001E6C;
+$accent-color: #dd9100;
+$text-on-primary: #ffffff; // Color de texto para fondo primario
+$hover-on-primary: rgba(255, 255, 255, 0.1); // Efecto hover en botones de la toolbar
+$active-link-border: 2px solid $accent-color; // Borde para el enlace activo
+
+.main-toolbar {
+  height: 64px; // Altura estándar de Material Toolbar en desktop
+  padding: 0 24px; // Padding horizontal
+  display: flex;
+  align-items: center;
+  justify-content: space-between; // Espacio entre el logo/título y los botones
+  // Agrega una sombra sutil a la toolbar para que parezca que "flota"
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: $primary-color; // Color de fondo primario
+  // Marca de la aplicación (ícono y título)
+  .toolbar-brand {
+    display: flex;
+    align-items: center;
+    cursor: pointer; // ¡Cursor de dedo para indicar que es clicable!
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease; // Transición para hover y posible animación
+
+    &:hover {
+      opacity: 0.8;
+      transform: scale(1.02); // Ligera animación de escala al pasar el mouse
+    }
+
+    .app-icon {
+      font-size: 28px; // Tamaño del ícono
+      width: 28px;
+      height: 28px;
+      margin-right: 8px; // Espacio entre ícono y título
+      color: $text-on-primary;
+    }
+
+    .app-title {
+      font-size: 20px; // Tamaño del título de la aplicación
+      font-weight: 600; // Más negrita
+      color: $text-on-primary;
+      letter-spacing: 0.5px; // Espaciado entre letras
+    }
+  }
+
+  .spacer {
+    flex: 1 1 auto; // Empuja los elementos a los extremos
+  }
+
+  // Navegación principal (botones de sección)
+  .toolbar-navigation {
+    display: flex;
+    gap: 8px; // Espacio entre los botones de navegación
+
+    .nav-button {
+      color: $text-on-primary;
+      padding: 0 16px; // Más padding para botones
+      min-width: unset; // Ancho mínimo automático
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.25px;
+      height: 48px; // Altura de los botones
+      border-radius: 4px; // Ligeros bordes redondeados
+      display: flex;
+      align-items: center;
+      gap: 6px; // Espacio entre ícono y texto del botón
+      cursor: pointer; // ¡Cursor de dedo para todos los botones de navegación!
+      // Transiciones para la animación de elevación y cambio de color
+      transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+
+
+      &.active-link {
+        // Estilo para el enlace activo
+        background-color: $hover-on-primary; // Fondo ligeramente resaltado
+        border-bottom: $active-link-border; // Borde inferior
+        font-weight: 600; // Un poco más negrita
+        transform: translateY(-2px); // Ligeramente elevado para el link activo
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); // Sombra para el link activo
+      }
+
+      &:hover:not(.active-link) { // Aplica hover solo si no es el link activo
+        background-color: $hover-on-primary;
+        transform: translateY(-2px); // ¡Elevación suave al pasar el mouse!
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); // Sombra para indicar elevación
+      }
+    }
+  }
+
+  // Botón de salir
+  .logout-button {
+    color: $text-on-primary;
+    margin-left: 16px; // Espacio a la izquierda para separarlo de los otros botones
+    cursor: pointer; // ¡Cursor de dedo para el botón de salir!
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease; // Transiciones para hover
+
+    &:hover {
+      background-color: $hover-on-primary;
+      transform: translateY(-2px); // ¡Elevación suave al pasar el mouse!
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); // Sombra para indicar elevación
+    }
+  }
+}
+
+/* --- Media Queries para Responsividad --- */
+
+@media (max-width: 768px) {
+  .main-toolbar {
+    height: 56px; // Altura estándar de Material Toolbar en móviles
+    padding: 0 16px;
+
+    .toolbar-brand {
+      .app-icon {
+        font-size: 24px;
+        width: 24px;
+        height: 24px;
+      }
+      .app-title {
+        font-size: 18px;
+        // Ocultar el título en pantallas muy pequeñas si solo quieres el ícono
+        // @media (max-width: 480px) {
+        //   display: none;
+        // }
+      }
+    }
+
+    .toolbar-navigation {
+      .nav-button {
+        padding: 0 12px;
+        font-size: 14px;
+        height: 40px;
+        gap: 4px; // Menos espacio entre ícono y texto
+      }
+    }
+
+    .logout-button {
+      margin-left: 8px; // Menos margen en móviles
+    }
+  }
+}

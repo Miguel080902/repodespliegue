@@ -1,0 +1,17 @@
+# Node modules y dependencias locales
+node_modules
+dist
+tmp
+npm-debug.log
+yarn-error.log
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Configuración de IDEs
+.vscode
+.idea
+
+# Otros
+*.swp

@@ -1,0 +1,66 @@
+.login-card {
+  width: 400px;
+  padding: 20px;
+  border: 1px solid #ddd; /* Bordeado */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra inicial */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para levitación */
+  animation: fadeIn 0.8s ease; /* Animación de entrada */
+}
+
+.login-card:hover {
+  transform: translateY(-5px); /* Efecto de levitación */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.login-button{
+  width: 100%;
+  background-color: #001E6C !important; /* Color primario */
+  color: white !important; /* Texto blanco */
+  font-weight: bold; /* Texto en negrita */
+  border-radius: 2em;
+}
+mat-card-title {
+  text-align: center;
+  font-size: 24px; /* Adjust the size as needed */
+  font-weight: bold;
+}
+.mat-mdc-card-header {
+  justify-content: center;
+  padding-bottom: 1em; /* Adjust padding as needed */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Semi-transparent divider */
+}
+
+mat-card-subtitle {
+  text-align: center;
+  font-size: 16px; /* Adjust the size as needed */
+  color: #666; /* Optional: Add a subtle color */
+}
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Espacio entre los campos del formulario */
+  padding-top: 1em;
+}

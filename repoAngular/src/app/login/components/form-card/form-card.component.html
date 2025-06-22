@@ -1,0 +1,60 @@
+<div class="login-container" @fadeInCard> <mat-card class="login-card">
+  <mat-card-header class="login-card-header">
+    <mat-card-title>
+      <mat-icon class="login-icon">login</mat-icon> Iniciar Sesión
+    </mat-card-title>
+    <mat-card-subtitle>
+      Bienvenido de nuevo. Accede para gestionar y visualizar rutas interactivas.
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Correo electrónico</mat-label>
+        <mat-icon matPrefix>email</mat-icon>
+        <input matInput type="email" formControlName="email" placeholder="ejemplo@dominio.com" required />
+        @if (loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched){
+          <mat-error>
+            El correo electrónico es requerido.
+          </mat-error>
+        }
+        @if (loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched){
+          <mat-error>
+            Ingresa un correo electrónico válido.
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <mat-icon matPrefix>lock</mat-icon>
+        <input matInput type="password" formControlName="password" placeholder="Ingresa tu contraseña" required />
+        @if (loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched){
+          <mat-error>
+            La contraseña es requerida.
+          </mat-error>
+        }
+      </mat-form-field>
+
+      @if (errorMessage){
+        <div class="app-error-message">
+          <mat-icon>error_outline</mat-icon> {{ errorMessage }}
+        </div>
+      }
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions class="login-actions">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      (click)="onLogin()"
+      [disabled]="loginForm.invalid"
+    >
+      <mat-icon>vpn_key</mat-icon> Ingresar
+    </button>
+  </mat-card-actions>
+</mat-card>
+</div>

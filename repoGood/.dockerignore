@@ -1,0 +1,27 @@
+# Compilados de Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Archivos de base de datos locales
+db.sqlite3
+
+# Entornos virtuales
+.env
+.venv
+env/
+venv/
+
+# Logs
+*.log
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Configuración de IDEs
+.vscode
+.idea
+
+# Archivos de migración cacheados (opcionales)
+**/*.pyc

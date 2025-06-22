@@ -1,0 +1,307 @@
+// Asegúrate de tener los estilos base de Material en tu main styles.css o angular.json
+// @import '@angular/material/theming';
+// @include mat-core();
+
+// Definición de variables (opcional, puedes usar el tema de Material directamente)
+$primary-color: #3f51b5; // Ejemplo de un color primario
+$accent-color: #ff4081; // Ejemplo de un color de acento
+$spacing-unit: 16px;
+
+.admin-container {
+  padding-top: 0; // Eliminamos el padding-top del HTML ya que el toolbar lo manejará
+  display: flex;
+  flex-direction: column;
+
+  mat-toolbar {
+    padding: $spacing-unit;
+    .spacer {
+      flex: 1 1 auto; // Empuja el botón a la derecha
+    }
+  }
+
+  .content-wrapper {
+    padding: $spacing-unit;
+    flex-grow: 1; // Permite que el contenido ocupe el espacio restante
+  }
+}
+
+.user-table-container {
+  margin-top: $spacing-unit;
+  border-radius: 4px; // Bordes ligeramente redondeados
+  overflow: hidden; // Asegura que los bordes redondeados se apliquen correctamente a la tabla interna
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Una sombra más sutil
+  opacity: 0; // Inicialmente invisible
+  transform: translateY(20px); // Ligeramente desplazado hacia abajo
+  animation: fadeInSlideUp 0.5s ease-out forwards; // Aplica la animación
+  animation-delay: 0.3s; // Retraso para que aparezca después del contenido principal
+}
+
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.full-width-table {
+  width: 100%;
+
+  // Estilos para las celdas y cabeceras de la tabla
+  th.mat-header-cell {
+    background-color: #f5f5f5; // Un fondo más claro para las cabeceras
+    font-weight: 600;
+    color: #333 !important;
+    padding: $spacing-unit/2 $spacing-unit;
+  }
+
+  td.mat-cell {
+    padding: $spacing-unit/2 $spacing-unit;
+    border-bottom: 1px solid #eee; // Línea divisoria más suave
+  }
+
+  tr.mat-row:last-child td {
+    border-bottom: none; // Elimina la línea inferior de la última fila
+  }
+
+  .mat-column-id {
+    width: 60px; // Ancho fijo para la columna ID
+    text-align: center;
+  }
+
+  // Estilos para la fila cuando no hay datos
+  .mat-no-data-row {
+    text-align: center;
+    padding: $spacing-unit;
+    font-style: italic;
+    color: #777;
+  }
+}
+
+// Estilos para el diálogo (generalmente en un archivo de estilos global o en el componente del diálogo)
+.mat-mdc-dialog-container {
+  .mat-mdc-dialog-content {
+    padding: $spacing-unit * 1.5; // Ajusta el padding del contenido del diálogo
+    overflow: hidden; // Previene scrollbar innecesarios
+  }
+}
+
+h2.mat-dialog-title {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee; // Separador para el título
+  margin-bottom: $spacing-unit; // Espacio entre el título y el contenido
+
+  .dialog-title-icon {
+    color: $primary-color; // Color para el icono del título
+  }
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: $spacing-unit; // Espacio entre campos del formulario
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: $spacing-unit / 2;
+  margin-top: $spacing-unit;
+
+  button {
+    min-width: 100px; // Ancho mínimo para los botones de acción
+  }
+}
+
+// Variables para consistencia
+$primary-color: #3f51b5; // Ejemplo de un color primario de Material
+$accent-color: #ff4081; // Ejemplo de un color de acento de Material
+$warn-color: #f44336;   // Ejemplo de un color de advertencia de Material
+$background-light: rgba(255, 255, 255, 0.95);
+$shadow-strength: 0.15;
+$border-radius-size: 8px;
+$spacing-unit: 16px;
+
+.map-container {
+  position: relative;
+  width: 100%;
+  // Ocupa el 100% del alto de la ventana visible menos el alto de tu toolbar/header
+  // Ajusta 64px según el alto real de tu encabezado
+  height: 100%; // Ajusta según el alto de tu toolbar
+  overflow: hidden; // Asegura que nada se desborde
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  background-color: #e0e0e0; // Color de fondo mientras carga el mapa
+}
+
+.controls-panel {
+  position: absolute;
+  top: $spacing-unit;
+  left: $spacing-unit;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-unit; // Espacio entre el grupo de botones y las instrucciones
+  background: $background-light;
+  padding: $spacing-unit;
+  border-radius: $border-radius-size;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, $shadow-strength); // Sombra más prominente
+  max-width: 300px; // Limita el ancho del panel para no ocupar demasiado espacio
+  // Transición suave para cualquier cambio en la posición/tamaño si se usa en animaciones
+  transition: all 0.3s ease-in-out;
+  opacity: 0; // Inicialmente invisible
+  transform: translateY(-20px); // Ligeramente desplazado hacia arriba
+  animation: slideInFadeIn 0.6s ease-out forwards; // Aplica la animación
+  animation-delay: 0.3s; // Pequeño retraso para que el mapa cargue primero
+  top: 80px; // Ajusta según el espacio que necesites desde la parte superior
+  // Estilos para el grupo de botones
+  .button-group {
+    display: flex;
+    flex-direction: column; // Botones apilados por defecto
+    gap: $spacing-unit / 2; // Espacio entre botones
+
+    button {
+      width: 100%; // Ocupa todo el ancho disponible en el grupo
+      display: flex; // Para alinear icono y texto
+      align-items: center;
+      justify-content: center; // Centra el contenido del botón
+      padding: 10px 15px;
+      font-size: 15px;
+      min-height: 40px; // Altura mínima para botones
+      line-height: 1.2; // Mejorar la legibilidad del texto con icono
+
+      mat-icon {
+        margin-right: 8px; // Espacio entre el icono y el texto
+      }
+    }
+
+    // Estilos específicos para botones de Material Design (si los usas)
+    // Estos son ejemplos, asegúrate de que coincidan con tu tema de Material.
+    .mat-mdc-raised-button[color="primary"] {
+      background-color: $primary-color;
+      color: white;
+    }
+    .mat-mdc-raised-button[color="accent"] {
+      background-color: $accent-color;
+      color: white;
+    }
+    .mat-mdc-raised-button[color="basic"] {
+      background-color: #e0e0e0;
+      color: #333;
+    }
+    .mat-mdc-stroked-button[color="warn"] {
+      border-color: $warn-color;
+      color: $warn-color;
+    }
+  }
+
+  // Estilos para la tarjeta de instrucciones
+  .instructions-card {
+    background-color: #f7f7f7; // Fondo ligeramente diferente
+    padding: $spacing-unit;
+    border-radius: $border-radius-size / 2;
+    border: 1px solid #e0e0e0; // Borde sutil
+    font-size: 13px;
+    color: #444;
+    line-height: 1.5;
+
+    h3 {
+      margin-top: 0;
+      margin-bottom: $spacing-unit / 2;
+      font-size: 16px;
+      color: #333;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 6px 0; // Espaciado entre párrafos de instrucciones
+      strong {
+        font-weight: bold; // Para resaltar texto importante
+      }
+    }
+  }
+}
+
+@keyframes slideInFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); // Vuelve a su posición original
+  }
+}
+
+/* --- Media Queries para Responsividad --- */
+
+// Para pantallas pequeñas (ej. móviles)
+@media (max-width: 768px) {
+  .map-container {
+    height: calc(100vh - 56px); // Ajusta si tu toolbar es más pequeña en móviles
+  }
+
+  .controls-panel {
+    top: auto; // Elimina la posición fija superior
+    left: 0;
+    right: 0;
+    bottom: 0; // Fija el panel en la parte inferior
+    width: 100%;
+    max-width: none; // Permite que ocupe todo el ancho
+    border-radius: $border-radius-size $border-radius-size 0 0; // Bordes redondeados solo arriba
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, $shadow-strength); // Sombra en la parte superior
+    transform: translateY(20px); // Desplazado hacia abajo para la animación desde abajo
+    animation: slideInFadeInMobile 0.6s ease-out forwards;
+    animation-delay: 0.3s;
+    .button-group {
+      flex-direction: row; // Botones en fila en móviles
+      flex-wrap: wrap; // Permite que los botones salten de línea si no caben
+      justify-content: center; // Centra los botones
+      gap: $spacing-unit / 2; // Espacio entre botones
+
+      button {
+        flex: 1 1 auto; // Permite que los botones se expandan y contraigan
+        max-width: 160px; // Ancho máximo para cada botón en móvil
+      }
+    }
+
+    .instructions-card {
+      display: none; // Oculta las instrucciones en pantallas muy pequeñas para ahorrar espacio
+      // Considera un botón para mostrar/ocultar instrucciones si las necesitas en móvil
+    }
+  }
+
+  @keyframes slideInFadeInMobile {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+// Para pantallas medianas (ej. tablets)
+@media (min-width: 769px) and (max-width: 1024px) {
+  .controls-panel {
+    max-width: 250px; // Un poco más estrecho en tablets
+    padding: $spacing-unit;
+  }
+
+  .button-group {
+    button {
+      font-size: 14px; // Texto un poco más pequeño
+      padding: 8px 12px;
+    }
+  }
+}
+
+

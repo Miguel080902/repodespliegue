@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./repoGood
+      dockerfile: Dockerfile
+    container_name: django_app
+    volumes:
+      - ./repoGood:/app
+      - ./repoGood/db.sqlite3:/app/db.sqlite3  # persistencia
+    ports:
+      - "8000:8000"
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    depends_on:
+      - frontend
+
+  frontend:
+    build:
+      context: ./repoAngular
+      dockerfile: Dockerfile
+    container_name: angular_app
+    volumes:
+      - ./repoAngular:/app
+    ports:
+      - "4200:4200"
+    command: sh -c "npm install && npm start"
+
